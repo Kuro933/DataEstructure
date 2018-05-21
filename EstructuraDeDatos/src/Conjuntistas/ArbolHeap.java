@@ -3,17 +3,30 @@ package Conjuntistas;
 public class ArbolHeap {
 	private final int TAM=20;
 	private int [] heap;
-	private int ultimo=0;
+	private int ultimo;
 	public ArbolHeap() {
 		heap= new int[TAM];
+		this.ultimo=0;
+		this.heap[0]=-0;
 		
 	}
 	public boolean insertar(int elem) {
-		boolean exito=false;
-		return exito;
+        	boolean exito = false;
+        	if (this.ultimo == 0) {
+            	//estructura vacia, ingreso el elemento como raiz
+            		this.heap[1] = elem;
+            		this.ultimo++;
+            		exito = true;
+        	} else {
+            		this.heap[ultimo] = elem;
+            		exito = true;
+        	}
+        	this.ultimo++;
+        	return exito;
+    	}
 		
 	}
-	public boolean eliminarCim() {
+	public boolean eliminarCima() {
 		boolean exito;
 		if(this.ultimo==0) {
 			//estructura vacia
