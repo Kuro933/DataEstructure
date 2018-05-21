@@ -47,26 +47,31 @@ public class ArbolGen {
         
         return exito;
     }
-    public boolean insertarUltima(Object elem,Object padre){
-        boolean exito=false;
-        
-        NodoGen father=obtenerNodo(this.raiz,padre);
-        
-        if(father!=null){
-            NodoGen nuevo=new NodoGen(elem);
-            if(father.getHijoIzq()==null){
-                father.setHijoIzq(nuevo);
-            }else{
-                NodoGen h=(NodoGen)father.getHijoIzq();
-                while(h.getHermanoDer()!=null){
-                    h=(NodoGen)h.getHermanoDer();
-                }
-                h.setHermanoDer(nuevo);
-            }
-            exito=true;
-        }
-        return exito;
-    }
+    public boolean insertarUltima(Object elem, Object padre) {
+		boolean exito = false;
+		NodoGen nuevo;
+		if (this.raiz == null) {
+			nuevo = new NodoGen(elem);
+			this.raiz = nuevo;
+			exito = true;
+		} else {
+			NodoGen father = obtenerNodo(this.raiz, padre);
+			if (father != null) {
+				nuevo = new NodoGen(elem);
+				if (father.getHijoIzq() == null) {
+					father.setHijoIzq(nuevo);
+				} else {
+					NodoGen h = (NodoGen) father.getHijoIzq();
+					while (h.getHermanoDer() != null) {
+						h = (NodoGen) h.getHermanoDer();
+					}
+					h.setHermanoDer(nuevo);
+				}
+				exito = true;
+			}
+		}
+		return exito;
+	}
     public boolean pertenece(Object elem){
         boolean encontrado=false;
         if(obtenerNodo(this.raiz,elem)!=null){
